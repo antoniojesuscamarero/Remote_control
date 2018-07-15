@@ -1,3 +1,8 @@
+/*Based on the library created by:
+
+https://github.com/darkomen/Arduino/blob/master/Arduino/libraries/NECIRrcv/NECIRrcv.h
+
+*/
 #include <Arduino.h>
 #include <NECIRrcv.h>
 #define IRPIN 2   // pin al que conectamos el receptor de IR
