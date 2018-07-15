@@ -1,0 +1,28 @@
+#include <Arduino.h>
+#include <NECIRrcv.h>
+#define IRPIN 2   // pin that IR detector is connected to
+int led = 13;
+static int aux = 1;
+NECIRrcv ir(IRPIN) ;
+void setup()
+{
+  pinMode(led, OUTPUT);
+  ir.begin() ;
+}
+void loop()
+{
+  unsigned long ircode ;
+  while (ir.available()) { 
+    ircode = ir.read() ;
+    if(ircode == 4228120065){  /*en nuestro caso, corresponde con el botón encendido/apagado del mando*/
+      if(aux == 0){
+        digitalWrite(led, LOW);
+        aux = 1;
+      }
+      else{
+        digitalWrite(led, HIGH);
+        aux = 0;
+      }
+    } 
+  }
+}
